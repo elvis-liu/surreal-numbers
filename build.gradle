@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        mavenRepo name: 'clojars', url: 'http://clojars.org/repo'
+    }
+    dependencies {
+        classpath 'clojuresque:clojuresque:1.5.4'
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'clojure'
+
+group = 'com.exmertec.elvis.surreal_numbers'
+version = '0.1'
+
+warnOnReflection = true
+aotCompile = true
+
+repositories {
+    mavenCentral()
+    clojarsRepo()
+}
+
+dependencies {
+    compile 'org.clojure:clojure:1.5.0'
+    compile 'org.clojure:clojure-contrib:1.2.0'
+    testCompile 'midje:midje:1.5.0'
+}
+
+clojureTest {
+    classpath += files('src/test/clojure')
+}
