@@ -13,8 +13,8 @@ apply plugin: 'clojure'
 group = 'com.exmertec.elvis.surreal_numbers'
 version = '0.1'
 
-warnOnReflection = true
-aotCompile = true
+warnOnReflection = false
+aotCompile = false
 
 repositories {
     mavenCentral()
@@ -30,3 +30,7 @@ dependencies {
 clojureTest {
     classpath += files('src/test/clojure')
 }
+
+// Remove the clojureTest task from the 'test' task dependencies, replace with
+// the new task to support midje test framework.
+test.dependsOn.remove(clojureTest)
